@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de pessoas</title>
+  <script src="/script.js"></script>
+</head>
+<body>
+<h1 th:text="${mensagem}"></h1>
+
+<form action="/salvar" method="post">
+  <input type="text" name="nome" id="nome" placeholder="Nome">
+  <input type="email" name="email" id="email" placeholder="Email">
+  <button type="submit" onclick="salvarLocal()">Salvar</button>
+</form>
+
+<h2>Pessoas Cadastradas</h2>
+<ul>
+  <li th:each="p : ${pessoas}" th:text="${p.nome + ' - ' + p.email}"></li>
+</ul>
+
+<hr>
+
+<h3>Ultimo nome digitado (LocalStorage):</h3>
+<p id="ultimoNome"></p>
+
+<h3>Controlador de visitas (SessionStorage):</h3>
+<p id="visitas"></p>
+
+<a href="/sobre">Ir para Sobre</a>
+
+</body>
+</html>
